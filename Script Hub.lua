@@ -4,7 +4,7 @@ game.StarterGui:SetCore("SendNotification", {
 	Duration = 5
 })
 
-local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
+local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"), true)()
 local NebulaIcons = loadstring(game:HttpGetAsync("https://raw.nebulasoftworks.xyz/nebula-icon-library-loader"))()
 
 WindUI.Creator.AddIcons("Nebula", NebulaIcons)
@@ -22,7 +22,7 @@ screenGui.Parent = playerGui
 
 -- Флаг: открыто ли окно (чтобы не показывать диалог повторно)
 local isWindowOpen = false
-
+local version = "v1.4.3"
 local FLING_ALL_TELEPORT_DISTANCE = 6
 
 -- Функция открытия основного окна
@@ -103,7 +103,7 @@ local function openMainWindow()
 	})
 
 	Window:Tag({
-		Title = "v1.4.0",
+		Title = version,
 		Color = Color3.fromHex("#FFA500"),
 		Radius = 13, -- from 0 to 13
 	})
@@ -258,6 +258,40 @@ local function openMainWindow()
 				"https://raw.githubusercontent.com/vertex-peak/vertex/refs/heads/main/loadstring",
 				"MM2"
 			)
+		end
+	})
+
+	gamesTab:Button({
+		Title = "PVB",
+		Desc = "Plants VS Brainrots",
+		Callback = function()
+			loadScript(
+				"https://hackmanhub.pages.dev/loader.txt",
+				"PVB"
+			)
+		end
+	})
+
+	gamesTab:Button({
+		Title = "SAB",
+		Desc = "Steal a brainrot",
+		Callback = function()
+			loadScript(
+				"https://raw.githubusercontent.com/OverflowBGSI/Overflow/refs/heads/main/loader.txt",
+				"SAB"
+			)
+		end
+	})
+
+	gamesTab:Button({
+		Title = "Fish It",
+		Desc = "Fish It Script",
+		Icon = "fish",
+		Callback = function()
+			loadScript(
+				"https://raw.githubusercontent.com/MajestySkie/list/refs/heads/main/games",
+				"Fish It"
+			)	
 		end
 	})
 
@@ -419,7 +453,8 @@ local function openMainWindow()
 	infoTab:Paragraph({
 		Title = "Информация о хабе:",
 		Desc = [[
-	- Версия: v1.0
+	- Версия: ]] .. version .. [[
+
 	- Автор: Дмитрий
 	- Назначение: централизованный запуск скриптов
 	- Интерфейс: WindUI
